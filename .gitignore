@@ -1,0 +1,2 @@
+# 환경 변수 : API key, assistants key and so on..
+*.env
