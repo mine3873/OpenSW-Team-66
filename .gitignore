@@ -1,2 +1,5 @@
 # 환경 변수 : API key, assistants key and so on..
 *.env
+
+# TTS 모델 파일 -> 용량 크기 제한 
+*.pth
