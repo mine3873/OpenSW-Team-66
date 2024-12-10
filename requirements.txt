@@ -1,0 +1,10 @@
+openai
+torch
+torchvision
+torchaudio
+numpy
+sounddevice
+typing_extensions
+python-dotenv
+transformers
+concurrent-log-handler
