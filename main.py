@@ -13,10 +13,10 @@ import sounddevice as sd
 import numpy as np
 import concurrent.futures
 
-CONFIG_PATH = "BACKEND/TTS/training/run/training/GPT_XTTS_v2.0_korean_FT-December-07-2024_05+19PM-7e7e6cf/config.json"
+CONFIG_PATH = "BACKEND/TTS/training/run/training/TTSMODEL/config.json"
 # config.json 의 경로
 
-MODEL_FILE_PATH = "BACKEND/TTS/training/run/training/GPT_XTTS_v2.0_korean_FT-December-07-2024_05+19PM-7e7e6cf"
+MODEL_FILE_PATH = "BACKEND/TTS/training/run/training/TTSMODEL"
 # model.pth 파일이 존재하는 파일 경로
 
 API_KEY_PATH = "BACKEND/textGenerate/src/API key/APIKEY.env"
