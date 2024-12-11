@@ -7,11 +7,15 @@ from openai import OpenAI, AssistantEventHandler
 from typing_extensions import override
 from dotenv import load_dotenv
 import torch
+import torch.backends.cudnn as cudnn
 from TTS.tts.configs.xtts_config import XttsConfig
 from TTS.tts.models.xtts import Xtts
 import sounddevice as sd
 import numpy as np
 import concurrent.futures
+
+cudnn.benchmark = True
+cudnn.deterministic = False
 
 CONFIG_PATH = "BACKEND/TTS/training/run/training/TTSMODEL/config.json"
 # config.json 의 경로
@@ -19,10 +23,12 @@ CONFIG_PATH = "BACKEND/TTS/training/run/training/TTSMODEL/config.json"
 MODEL_FILE_PATH = "BACKEND/TTS/training/run/training/TTSMODEL"
 # model.pth 파일이 존재하는 파일 경로
 
-API_KEY_PATH = "BACKEND/textGenerate/src/API key/APIKEY.env"
+API_KEY_PATH = "BACKEND/src/API key/APIKEY.env"
 # APIKEY.env 파일 경로
 
 ASSITANT_ID = "asst_xIkokff6y2c6HsHZdLs9gWG8"
+
+SAMPLE_AUDIO_PATH = "BACKEND/TTS/training/run/training/wav_resampled/1/1_0000.wav"
 
 warnings.filterwarnings("ignore")
 logging.getLogger("transformers").setLevel(logging.ERROR)
@@ -48,17 +54,19 @@ def load_tts():
     model = Xtts.init_from_config(config)
     model.load_checkpoint(config, checkpoint_dir=MODEL_FILE_PATH, use_deepspeed=False)
     model.cuda()
-    gpt_cond_latent, speaker_embedding = model.get_conditioning_latents(audio_path=["BACKEND/TTS/training/run/training/wav_resampled/1/1_0000.wav"])
+    gpt_cond_latent, speaker_embedding = model.get_conditioning_latents(audio_path=[SAMPLE_AUDIO_PATH])
 
 # openai, TTS 모델 로드
 def load_both():
+    print("load models...")
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = [
             executor.submit(load_openai),
             executor.submit(load_tts),
         ]
         concurrent.futures.wait(futures)
-
+    print("Successful")
+        
 class EventHandler(AssistantEventHandler):
     def __init__(self):
         super().__init__()
@@ -79,7 +87,7 @@ def ask_assistant_streaming(question):
         with client.beta.threads.runs.stream(
             thread_id=thread.id,
             assistant_id=assistant.id,  
-            instructions="대화형 심리 상담 모델입니다. 응답은 최대 80자를 초과하지 않도록 간결하고 핵심내용만 전달해주세요.",  
+            instructions="대화형 심리 상담 모델이고, 응답은 최대 80자를 초과하지 않도록 간결하고 핵심내용만 전달해주세요.",  
             additional_messages=[{"role": "user", "content": question}],  
             event_handler=handler,
             max_completion_tokens=100,
@@ -107,7 +115,7 @@ def createTTS(response):
         sentences = split_text_into_sentences(response)
         audio_data_list = []
 
-        silence_duration = 0.3 
+        silence_duration = 0.1
         silence = np.zeros(int(24000 * silence_duration))
 
         for idx, sentence in enumerate(sentences):
