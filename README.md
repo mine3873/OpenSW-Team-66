@@ -24,7 +24,4 @@ you must create API key from open-ai to run
 python main.py
 ```
 
-<video width="600" controls>
-  <source src="https://github.com/mine3873/OpenSW-Team-66/raw/master/BACKEND/src/video/test.mp4" type="video/mp4">
-  비디오를 지원하지 않음. [download](https://github.com/mine3873/OpenSW-Team-66/raw/master/BACKEND/src/video/test.mp4)
-</video>
+[Watch the test video](https://raw.githubusercontent.com/mine3873/OpenSW-Team-66/raw/master/BACKEND/src/video/test.mp4)
