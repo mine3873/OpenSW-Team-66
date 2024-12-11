@@ -24,4 +24,4 @@ you must create API key from open-ai to run
 python main.py
 ```
 
-[Watch the test video](https://raw.githubusercontent.com/mine3873/OpenSW-Team-66/raw/master/BACKEND/src/video/test.mp4)
+[Watch the test video](https://raw.githubusercontent.com/mine3873/OpenSW-Team-66/master/BACKEND/src/video/test.mp4)
