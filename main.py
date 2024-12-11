@@ -15,11 +15,14 @@ import concurrent.futures
 
 CONFIG_PATH = "BACKEND/TTS/training/run/training/GPT_XTTS_v2.0_korean_FT-December-07-2024_05+19PM-7e7e6cf/config.json"
 # config.json 의 경로
+
 MODEL_FILE_PATH = "BACKEND/TTS/training/run/training/GPT_XTTS_v2.0_korean_FT-December-07-2024_05+19PM-7e7e6cf"
 # model.pth 파일이 존재하는 파일 경로
 
 API_KEY_PATH = "BACKEND/textGenerate/src/API key/APIKEY.env"
 # APIKEY.env 파일 경로
+
+ASSITANT_ID = "asst_xIkokff6y2c6HsHZdLs9gWG8"
 
 warnings.filterwarnings("ignore")
 logging.getLogger("transformers").setLevel(logging.ERROR)
@@ -33,7 +36,8 @@ def load_openai():
         api_key=os.getenv('OPENAI_API_KEY') 
     )
     assistant = client.beta.assistants.retrieve(
-        assistant_id=os.getenv('ASSISTANT_ID')  
+        #assistant_id=os.getenv('ASSISTANT_ID') 
+        assistant_id=ASSITANT_ID
     )
     thread = client.beta.threads.create()
 
