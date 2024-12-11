@@ -18,11 +18,14 @@ CONFIG_PATH = "BACKEND/TTS/training/run/training/GPT_XTTS_v2.0_korean_FT-Decembe
 MODEL_FILE_PATH = "BACKEND/TTS/training/run/training/GPT_XTTS_v2.0_korean_FT-December-07-2024_05+19PM-7e7e6cf"
 # model.pth 파일이 존재하는 파일 경로
 
+API_KEY_PATH = "BACKEND/textGenerate/src/API key/APIKEY.env"
+# APIKEY.env 파일 경로
+
 warnings.filterwarnings("ignore")
 logging.getLogger("transformers").setLevel(logging.ERROR)
 # 로그 출력 최소
 
-load_dotenv(dotenv_path="BACKEND/textGenerate/src/API key/APIKEY.env")
+load_dotenv(dotenv_path=API_KEY_PATH)
 
 def load_openai():
     global client, assistant, thread
