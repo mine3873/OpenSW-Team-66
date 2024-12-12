@@ -9,7 +9,6 @@ class SpeechToText:
         with sr.Microphone() as source:
             print("\nSpeak now... (Listening)")
             try:
-                
                 audio = self.recognizer.listen(source, timeout=10)
                 text = self.recognizer.recognize_google(audio, language="ko-KR")
                 print(f"Recognized Speech: {text}")
