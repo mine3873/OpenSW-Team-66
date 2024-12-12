@@ -4,6 +4,11 @@
 We want to create the chatBot aimed at psychological counseling. 
 So using open-ai and TTS open source, we started this project.
 
+``` cmd
+git clone https://github.com/mine3873/OpenSW-Team-66.git
+```
+
+
 ## install
 ```python ver==3.10```
 
