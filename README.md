@@ -1,4 +1,4 @@
-# OpenSW-Team-66
+# Psychological counseling bot through conversation
 
 ## introduction 
 We want to create the chatBot aimed at psychological counseling. 
