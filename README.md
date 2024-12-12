@@ -49,3 +49,6 @@ python main.py
 
 - How to use ASSISTANT model 
     - [https://platform.openai.com/docs/assistants/quickstart](https://platform.openai.com/docs/assistants/quickstart)
+
+
+test
