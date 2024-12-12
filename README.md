@@ -1,8 +1,12 @@
 # OpenSW-Team-66
 
-```python ver==3.10```
+## introduction 
+We want to create the chatBot aimed at psychological counseling. 
+So using open-ai and TTS open source, we started this project.
 
 ## install
+```python ver==3.10```
+
 ``` cmd
 pip install -r requirements.txt
 ```
@@ -16,16 +20,24 @@ you must create API key from open-ai to run
 --> [https://platform.openai.com/docs/overview](https://platform.openai.com/docs/overview)
 
 
-## trained model.pth
+## DOWNLOAD trained model.pth
 [download](https://1drv.ms/u/s!AmtfKlFp1bieg41RKB_MvACAbzrDHQ?embed=1) model.pth and save into 
 --> `BACKEND/TTS/training/run/training/TTSMODEL`
 
 
 ## RUN
+``` python
+API_KEY_PATH = "YOUR OPEN AI APIKEY.env FILE PATH"
+# APIKEY.env 파일 경로
+```
+if you created open-ai API KEY and APIKEY.env, insert the PATH of APIKEY.env into `API_KEY_PATH`
+
+then, try below in terminal. 
 ``` cmd
 python main.py
 ```
 
+### SAMPLE VIDEO
 [Watch the test video](https://raw.githubusercontent.com/mine3873/OpenSW-Team-66/master/BACKEND/src/video/test.mp4)
 
 ## references
