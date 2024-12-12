@@ -10,7 +10,7 @@ import torch
 import torch.backends.cudnn as cudnn
 from TTS.tts.configs.xtts_config import XttsConfig
 from TTS.tts.models.xtts import Xtts
-from TTSMODEL.stt import SpeechToText  # STT 모듈 불러오기
+from BACKEND.TTS.training.run.training.TTSMODEL.stt import SpeechToText
 import sounddevice as sd
 import numpy as np
 import concurrent.futures
@@ -155,8 +155,9 @@ if __name__ == "__main__":
     print("Assistant Ready (Press Enter to start recording, then speak your question.)")
     while True:
         input("Press Enter to record...")
-        user_input = stt.recognize_speech()
+        user_input = str(stt.recognize_speech())
         if user_input:
             playWithThread(user_input)
         else:
             print("No valid input received.")
+        print()
